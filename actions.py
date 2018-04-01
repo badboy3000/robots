@@ -17,6 +17,7 @@ post_urls = [
     'https://tieba.baidu.com/p/5622324258',  # CLANNAD
     'https://tieba.baidu.com/p/5622219287',  # 黑执事
     'https://tieba.baidu.com/p/5621745503',  # 叛逆的鲁鲁修
+    'https://tieba.baidu.com/p/5628999264',  # darling in the frankxx
 ]
 
 contents = [
