@@ -1,33 +1,22 @@
 import time
-import random
 from selenium import webdriver
-from config import COOKIES
 
 def get_driver():
-    url = 'https://tieba.baidu.com/index.html'
-    # driver = webdriver.PhantomJS()
-    # driver = webdriver.PhantomJS('./phantomjs')
-    driver = webdriver.Chrome('./chromedriver')
-    driver.get(url)
+    return webdriver.Chrome('./chromedriver')
 
-    return driver
-
-def post_tei(driver, url, content):
+def vote(driver):
     driver.delete_all_cookies()
-    cookie = COOKIES.pop()
-    for i in cookie:
-        driver.add_cookie(i)
 
-    driver.get(url)
-    time.sleep(2.5)
+    driver.get('https://www.shixiseng.com/hirer/eachhirer?com=com_thfa4ld7grt5&award_type=%E6%9C%80%E4%BD%B3%E5%AE%9E%E4%B9%A0%E9%9B%87%E4%B8%BB')
 
-    driver.find_element_by_xpath('/html/body/ul/li[2]/a').click()
-    time.sleep(2.5)
+    time.sleep(1)
 
-    driver.find_element_by_xpath('//*[@id="ueditor_replace"]').send_keys(content)
-    driver.find_element_by_xpath('//*[@id="tb_rich_poster"]/div[3]/div[3]/div/a').click()
+    driver.find_element_by_css_selector('.vote').click()
 
-    newCookie = driver.get_cookies()
-    COOKIES.append(newCookie)
+    time.sleep(0.5)
+
+    driver.find_element_by_css_selector('.vote').click()
+
+    time.sleep(1)
 
     return True
